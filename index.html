@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yusistely Luna – QA Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ══════════════════════════════════════
+       THEME VARIABLES
+    ══════════════════════════════════════ */
+    :root {
+      --teal:        #0d9488;
+      --teal-d:      #0f766e;
+      --teal-l:      #0d9488;
+      --teal-pale:   rgba(13,148,136,0.10);
+      --teal-border: rgba(13,148,136,0.28);
+
+      /* LIGHT (default) */
+      --bg:          #f8fafc;
+      --bg2:         #ffffff;
+      --bg3:         #f1f5f9;
+      --bg4:         #e2e8f0;
+      --text:        #0f172a;
+      --text2:       #1e293b;
+      --muted:       #64748b;
+      --border:      #e2e8f0;
+      --shadow:      0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-lg:   0 10px 25px rgba(0,0,0,.10);
+      --nav-bg:      rgba(255,255,255,0.92);
+
+      /* badge colors */
+      --b-teal-c:    #0f766e; --b-teal-bg:   rgba(13,148,136,0.10);
+      --b-green-c:   #15803d; --b-green-bg:  rgba(21,128,61,0.10);
+      --b-blue-c:    #1d4ed8; --b-blue-bg:   rgba(29,78,216,0.10);
+      --b-orange-c:  #c2410c; --b-orange-bg: rgba(194,65,12,0.10);
+      --b-purple-c:  #6d28d9; --b-purple-bg: rgba(109,40,217,0.10);
+      --b-pink-c:    #be185d; --b-pink-bg:   rgba(190,24,93,0.10);
+    }
+
+    [data-theme="dark"] {
+      --bg:          #0f172a;
+      --bg2:         #1e293b;
+      --bg3:         #334155;
+      --bg4:         #475569;
+      --text:        #f1f5f9;
+      --text2:       #e2e8f0;
+      --muted:       #94a3b8;
+      --border:      #334155;
+      --shadow:      0 1px 3px rgba(0,0,0,.3);
+      --shadow-lg:   0 10px 25px rgba(0,0,0,.4);
+      --nav-bg:      rgba(15,23,42,0.93);
+      --teal-l:      #14b8a6;
+      --teal-pale:   rgba(13,148,136,0.15);
+      --teal-border: rgba(13,148,136,0.35);
+
+      --b-teal-c:    #2dd4bf; --b-teal-bg:   rgba(13,148,136,0.18);
+      --b-green-c:   #4ade80; --b-green-bg:  rgba(74,222,128,0.12);
+      --b-blue-c:    #60a5fa; --b-blue-bg:   rgba(96,165,250,0.12);
+      --b-orange-c:  #fb923c; --b-orange-bg: rgba(251,146,60,0.12);
+      --b-purple-c:  #a78bfa; --b-purple-bg: rgba(167,139,250,0.12);
+      --b-pink-c:    #f472b6; --b-pink-bg:   rgba(244,114,182,0.12);
+    }
+
+    /* ══════════════════════════════════════
+       BASE
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.7;
+      transition: background .3s, color .3s;
+    }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 60px; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .3s, border-color .3s;
+    }
+    .nav-brand { font-weight: 800; color: var(--teal-l); font-size: 1rem; }
+    .nav-right  { display: flex; align-items: center; gap: 2rem; }
+    .nav-links  { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .87rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--teal-l); }
+
+    /* theme toggle */
+    .theme-toggle {
+      width: 40px; height: 22px; border-radius: 999px;
+      background: var(--bg3); border: 1.5px solid var(--border);
+      cursor: pointer; position: relative;
+      transition: background .3s, border-color .3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle::after {
+      content: '';
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--teal-l);
+      position: absolute; top: 1px; left: 1px;
+      transition: transform .3s;
+    }
+    [data-theme="dark"] .theme-toggle::after { transform: translateX(18px); }
+    .theme-icon { font-size: .85rem; color: var(--muted); cursor: pointer; transition: color .2s; }
+    .theme-icon:hover { color: var(--teal-l); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 2rem 4rem; text-align: center;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%,
+        rgba(13,148,136,.13) 0%, transparent 70%);
+    }
+    .hero-inner { max-width: 800px; }
+
+    /* photo */
+    .hero-photo {
+      width: 140px; height: 140px; border-radius: 50%;
+      margin: 0 auto 1.6rem;
+      border: 3px solid var(--teal-l);
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 0 6px var(--teal-pale);
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      color: var(--muted); font-size: .72rem; gap: .3rem; padding: .5rem;
+    }
+    .photo-placeholder i { font-size: 2.8rem; color: var(--teal-l); opacity: .5; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--teal-pale); color: var(--teal-l);
+      border: 1px solid var(--teal-border); border-radius: 999px;
+      padding: .3rem 1rem; font-size: .76rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1.1rem;
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.1;
+      margin-bottom: .5rem; color: var(--text);
+    }
+    .hero-name span { color: var(--teal-l); }
+    .hero-roles {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      justify-content: center; margin-bottom: 1.5rem;
+    }
+    .role-pill {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 999px; padding: .28rem .9rem;
+      font-size: .82rem; color: var(--muted); font-weight: 500;
+      transition: background .3s, border-color .3s;
+    }
+    .hero-desc {
+      color: var(--muted); max-width: 600px;
+      margin: 0 auto 2rem; font-size: .97rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .72rem 1.7rem; border-radius: 8px;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none; transition: all .2s; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--teal); color: #fff;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 14px rgba(13,148,136,.35);
+    }
+    .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--teal-l);
+      border: 2px solid var(--teal-l);
+    }
+    .btn-outline:hover { background: var(--teal-pale); transform: translateY(-2px); }
+    .hero-socials { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .hero-socials a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 1rem;
+      transition: all .2s; text-decoration: none;
+    }
+    .hero-socials a:hover {
+      background: var(--teal-pale); border-color: var(--teal-l);
+      color: var(--teal-l); transform: translateY(-3px);
+    }
+    .location-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--muted); font-size: .83rem; margin-top: 1.2rem;
+    }
+    .location-pill i { color: var(--teal-l); }
+
+    /* ══════════════════════════════════════
+       INDEX
+    ══════════════════════════════════════ */
+    #index {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      transition: background .3s, border-color .3s;
+    }
+    .index-inner { max-width: 900px; margin: 0 auto; }
+    .index-label { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-l); margin-bottom: .8rem; }
+    .index-links { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; }
+    .index-links a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 999px; padding: .3rem .9rem;
+      color: var(--text2); text-decoration: none;
+      font-size: .84rem; font-weight: 500;
+      transition: all .2s;
+    }
+    .index-links a:hover { border-color: var(--teal-l); color: var(--teal-l); background: var(--teal-pale); }
+
+    /* ══════════════════════════════════════
+       SECTIONS (shared)
+    ══════════════════════════════════════ */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-l); margin-bottom: .4rem; }
+    .section-title { font-size: clamp(1.7rem, 3.5vw, 2.2rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: .7rem; }
+    .section-line  { width: 44px; height: 4px; background: var(--teal-l); border-radius: 2px; margin-bottom: 2.5rem; }
+
+    /* ══════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════ */
+    #about { background: var(--bg2); transition: background .3s; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: .95rem; }
+    .about-text p.lead { color: var(--text); font-size: 1rem; font-weight: 500; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .stat-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-left: 3px solid var(--teal-l); border-radius: 10px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      transition: background .3s, border-color .3s;
+    }
+    .stat-card .num   { font-size: 1.9rem; font-weight: 800; color: var(--teal-l); line-height: 1; }
+    .stat-card .lbl   { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ══════════════════════════════════════
+       TECH STACK
+    ══════════════════════════════════════ */
+    #stack { background: var(--bg); transition: background .3s; }
+    .stack-cat { margin-bottom: 2rem; }
+    .cat-title {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: .8rem; display: flex; align-items: center; gap: .5rem;
+    }
+    .cat-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .badges { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .38rem;
+      border-radius: 6px; padding: .38rem .85rem;
+      font-size: .82rem; font-weight: 600; border: 1px solid transparent;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .badge:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .badge-teal   { background: var(--b-teal-bg);   color: var(--b-teal-c);   border-color: rgba(13,148,136,.2); }
+    .badge-green  { background: var(--b-green-bg);  color: var(--b-green-c);  border-color: rgba(21,128,61,.2); }
+    .badge-blue   { background: var(--b-blue-bg);   color: var(--b-blue-c);   border-color: rgba(29,78,216,.2); }
+    .badge-orange { background: var(--b-orange-bg); color: var(--b-orange-c); border-color: rgba(194,65,12,.2); }
+    .badge-purple { background: var(--b-purple-bg); color: var(--b-purple-c); border-color: rgba(109,40,217,.2); }
+    .badge-pink   { background: var(--b-pink-bg);   color: var(--b-pink-c);   border-color: rgba(190,24,93,.2); }
+
+    /* ══════════════════════════════════════
+       PROJECTS
+    ══════════════════════════════════════ */
+    #projects { background: var(--bg2); transition: background .3s; }
+    .project-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: border-color .3s, transform .3s, box-shadow .3s, background .3s;
+    }
+    .project-card:last-child { margin-bottom: 0; }
+    .project-card:hover { border-color: var(--teal-l); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .project-header {
+      padding: 1.7rem 2rem 1.3rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 1rem;
+      transition: border-color .3s;
+    }
+    .project-num   { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-l); margin-bottom: .2rem; }
+    .project-title { font-size: 1.35rem; font-weight: 800; margin-bottom: .25rem; color: var(--text); }
+    .project-sub   { color: var(--muted); font-size: .87rem; }
+    .project-type  {
+      background: var(--teal-pale); color: var(--teal-l);
+      border: 1px solid var(--teal-border); border-radius: 999px;
+      padding: .28rem .9rem; font-size: .78rem; font-weight: 700; white-space: nowrap;
+    }
+
+    .project-body  { padding: 1.8rem 2rem; }
+    .proj-sec      { margin-bottom: 1.5rem; }
+    .proj-sec-lbl  { font-size: .73rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-l); margin-bottom: .45rem; }
+    .proj-sec p    { color: var(--muted); font-size: .92rem; }
+    code {
+      background: var(--bg3); color: var(--b-teal-c);
+      padding: .1em .4em; border-radius: 4px; font-size: .84em;
+      font-family: 'Courier New', monospace;
+      transition: background .3s;
+    }
+    ul.api-list { color: var(--muted); font-size: .9rem; margin: .5rem 0 0 1.2rem; display: flex; flex-direction: column; gap: .3rem; }
+
+    /* results row */
+    .proj-results {
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.2rem 1.5rem; margin-top: 1.2rem;
+      transition: background .3s, border-color .3s;
+    }
+    .r-stat .rnum  { font-size: 1.65rem; font-weight: 800; color: var(--teal-l); line-height: 1; }
+    .r-stat .rlbl  { font-size: .74rem; color: var(--muted); margin-top: .15rem; }
+
+    /* ── SCREENSHOTS ── */
+    .sc-section { margin-top: 1.8rem; }
+    .sc-title {
+      font-size: .73rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--teal-l); margin-bottom: .9rem;
+    }
+    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .sc-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color .2s, transform .2s, background .3s;
+    }
+    .sc-card:hover { border-color: var(--teal-l); transform: translateY(-2px); }
+    .sc-img-wrap {
+      width: 100%; height: 130px;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      transition: background .3s;
+    }
+    .sc-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    /* placeholder state (when no image) */
+    .sc-img-wrap.placeholder {
+      flex-direction: column; gap: .3rem; cursor: pointer;
+    }
+    .sc-img-wrap.placeholder i { font-size: 2rem; color: var(--teal-l); opacity: .4; }
+    .sc-img-wrap.placeholder span { font-size: .72rem; color: var(--muted); }
+    .sc-img-wrap.placeholder:hover { background: var(--teal-pale); }
+    .sc-img-wrap.placeholder:hover i { opacity: .7; }
+    .sc-caption {
+      padding: .55rem .8rem;
+      font-size: .78rem; font-weight: 600; color: var(--text2);
+      border-top: 1px solid var(--border);
+      transition: border-color .3s, color .3s;
+    }
+    .sc-note {
+      font-size: .75rem; color: var(--muted);
+      margin-top: .6rem; display: flex; align-items: center; gap: .3rem;
+    }
+
+    .project-footer {
+      padding: 1.1rem 2rem; border-top: 1px solid var(--border);
+      display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;
+      transition: border-color .3s;
+    }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--teal-l); text-decoration: none;
+      font-size: .87rem; font-weight: 600; transition: color .2s;
+    }
+    .proj-link:hover { color: var(--teal-d); }
+
+    /* ══════════════════════════════════════
+       ACHIEVEMENTS
+    ══════════════════════════════════════ */
+    #achievements { background: var(--bg); transition: background .3s; }
+    .ach-list { display: flex; flex-direction: column; gap: .9rem; }
+    .ach-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.2rem 1.6rem;
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      box-shadow: var(--shadow);
+      transition: border-color .2s, transform .2s, background .3s;
+    }
+    .ach-card:hover { border-color: var(--teal-l); transform: translateX(4px); }
+    .ach-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--teal-pale); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal-l); font-size: 1rem;
+    }
+    .ach-text strong { display: block; font-size: .95rem; margin-bottom: .2rem; color: var(--text); }
+    .ach-text p { color: var(--muted); font-size: .85rem; }
+
+    /* ══════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════ */
+    #contact { background: var(--bg2); text-align: center; transition: background .3s; }
+    .contact-desc { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
+    .contact-cards { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.2rem; }
+    .contact-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.3rem 1.7rem; min-width: 185px;
+      text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column; align-items: center; gap: .45rem;
+      box-shadow: var(--shadow);
+      transition: all .2s;
+    }
+    .contact-card:hover { border-color: var(--teal-l); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .contact-card i { font-size: 1.3rem; color: var(--teal-l); }
+    .cc-label { font-size: .7rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    .cc-value { font-size: .87rem; font-weight: 500; word-break: break-all; color: var(--text2); }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      text-align: center; padding: 1.6rem 2rem;
+      color: var(--muted); font-size: .82rem;
+      transition: background .3s, border-color .3s;
+    }
+    footer a { color: var(--teal-l); text-decoration: none; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links .hide-sm { display: none; }
+      .project-header { flex-direction: column; }
+      .project-body, .project-footer { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-brand">Yusistely Luna</div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li class="hide-sm"><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- Theme toggle -->
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <!-- ★ Replace the placeholder div with an <img> tag when you have your photo:
+         <img src="photo.jpg" alt="Yusistely Luna" style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--teal-l);margin:0 auto 1.6rem;display:block;box-shadow:0 0 0 6px var(--teal-pale)">  -->
+    <div class="hero-photo">
+      <img src="img/profile_picture.jpeg" alt="Yusistely Luna" />
+    </div>
+
+    <div class="hero-badge">🔍 Open to Remote Opportunities</div>
+    <h1 class="hero-name">Yusistely <span>Luna</span></h1>
+    <div class="hero-roles">
+      <span class="role-pill">QA Engineer Jr.</span>
+      <span class="role-pill">Manual Testing</span>
+      <span class="role-pill">API Testing</span>
+      <span class="role-pill">JIRA</span>
+      <span class="role-pill">Postman</span>
+    </div>
+    <p class="hero-desc">
+      Industrial Engineer turned QA professional — 10+ years of quality and process experience
+      at multinationals, now applying that rigor to software testing.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
+      <a href="CV_Yusistely_Luna_QA_Engineer_v1.pdf" class="btn btn-outline" target="_blank" download><i class="fas fa-file-alt"></i> Download CV</a>
+    </div>
+    <div class="hero-socials">
+      <a href="mailto:yusistely.luna@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/yusistely-luna-iis" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/yusistely-luna" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="location-pill"><i class="fas fa-map-marker-alt"></i> Toluca, Mexico · Available for remote positions</div>
+  </div>
+</section>
+
+<!-- ══ INDEX ══ -->
+<div id="index">
+  <div class="index-inner">
+    <p class="index-label">📋 Table of Contents</p>
+    <ul class="index-links">
+      <li><a href="#about"><i class="fas fa-rocket"></i> About Me</a></li>
+      <li><a href="#stack"><i class="fas fa-wrench"></i> Tech Stack</a></li>
+      <li><a href="#projects"><i class="fas fa-folder"></i> Featured Projects</a></li>
+      <li><a href="#achievements"><i class="fas fa-trophy"></i> Key Achievements</a></li>
+      <li><a href="CV_Yusistely_Luna_QA_Engineer_v1.pdf" target="_blank" download><i class="fas fa-file-alt"></i> CV</a></li>
+      <li><a href="#contact"><i class="fas fa-comments"></i> Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Who I am</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="lead">
+          I am passionate about doing things well and doing them with purpose — whether designing a test case,
+          leading an audit, or guiding a meditation at the start of a training session.
+        </p>
+        <p>
+          I began my career as an Industrial Engineer at multinational companies like
+          <strong>Tupperware, DuPont and Procter &amp; Gamble</strong>, where quality, regulatory compliance,
+          and continuous improvement were at the core of my work.
+        </p>
+        <p>
+          Later, at <strong>TSYS</strong>, reporting directly to the CTO, I became a key bridge between business
+          areas and the Software Development team. Over time I discovered that behind every Non-Conformity,
+          every audit, and every improved process, there was something I was deeply passionate about:
+          <strong>finding errors before they reach the end user.</strong>
+        </p>
+        <p>
+          Today I am training as a QA Engineer at the <strong>TripleTen Latam Bootcamp</strong>, working on
+          real projects applying manual testing, test case design, API testing with Postman, and defect
+          management in JIRA. What sets me apart is more than a decade of real experience in quality,
+          processes, and communication with technical teams.
+        </p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="num">10+</div><div class="lbl">Years in quality &amp; process improvement at multinationals</div></div>
+        <div class="stat-card"><div class="num">148</div><div class="lbl">Test cases designed &amp; executed across bootcamp projects</div></div>
+        <div class="stat-card"><div class="num">64</div><div class="lbl">Defects documented in JIRA (27 web · 37 API)</div></div>
+        <div class="stat-card"><div class="num">0</div><div class="lbl">Critical findings in ISO external audits led</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TECH STACK ══ -->
+<section id="stack">
+  <div class="section-inner">
+    <p class="section-label">What I work with</p>
+    <h2 class="section-title">Tech Stack</h2>
+    <div class="section-line"></div>
+
+    <div class="stack-cat">
+      <div class="cat-title">🧪 QA &amp; Testing</div>
+      <div class="badges">
+        <span class="badge badge-teal"><i class="fas fa-check-double"></i> Manual Testing</span>
+        <span class="badge badge-teal"><i class="fas fa-file-alt"></i> Test Case Design</span>
+        <span class="badge badge-teal"><i class="fas fa-clipboard-list"></i> Test Planning</span>
+        <span class="badge badge-teal"><i class="fas fa-cogs"></i> Functional Testing</span>
+        <span class="badge badge-teal"><i class="fas fa-redo"></i> Regression Testing</span>
+        <span class="badge badge-teal"><i class="fas fa-desktop"></i> Cross-browser Testing</span>
+      </div>
+    </div>
+
+    <div class="stack-cat">
+      <div class="cat-title">🔧 Tools</div>
+      <div class="badges">
+        <span class="badge badge-orange"><i class="fas fa-paper-plane"></i> Postman</span>
+        <span class="badge badge-blue"><i class="fab fa-jira"></i> JIRA</span>
+        <span class="badge badge-pink"><i class="fab fa-figma"></i> Figma</span>
+        <span class="badge badge-blue"><i class="fas fa-project-diagram"></i> diagrams.net</span>
+        <span class="badge badge-blue"><i class="fas fa-bug"></i> Bug Tracking</span>
+        <span class="badge badge-green"><i class="fab fa-github"></i> GitHub</span>
+      </div>
+    </div>
+
+    <div class="stack-cat">
+      <div class="cat-title">📐 Techniques</div>
+      <div class="badges">
+        <span class="badge badge-purple"><i class="fas fa-equals"></i> Equivalence Partitioning</span>
+        <span class="badge badge-purple"><i class="fas fa-ruler-combined"></i> Boundary Value Analysis</span>
+        <span class="badge badge-purple"><i class="fas fa-code"></i> REST API Testing</span>
+        <span class="badge badge-purple"><i class="fas fa-sitemap"></i> Decision Tables</span>
+      </div>
+    </div>
+
+    <div class="stack-cat">
+      <div class="cat-title">🏆 Standards &amp; Automation</div>
+      <div class="badges">
+        <span class="badge badge-pink"><i class="fas fa-certificate"></i> ISO 9001</span>
+        <span class="badge badge-pink"><i class="fas fa-shield-alt"></i> ISO 27001</span>
+        <span class="badge badge-green"><i class="fas fa-bolt"></i> Microsoft Power Automate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">What I've built</p>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="section-line"></div>
+
+    <!-- ── PROJECT 1 ── -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-num">Project 01</div>
+          <div class="project-title">🚗 Urban Routes</div>
+          <div class="project-sub">Web Application Testing · TripleTen Bootcamp, Sprints 2 &amp; 3 (2026)</div>
+        </div>
+        <span class="project-type"><i class="fas fa-desktop"></i> Functional &amp; UI Testing</span>
+      </div>
+      <div class="project-body">
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">🎯 Problem</div>
+          <p>Validate the design and functionality of a car-sharing web application across multiple environments, ensuring the booking flow, payment form, and UI elements worked correctly according to specifications.</p>
+        </div>
+
+          <div class="proj-sec">
+            <div class="proj-sec-lbl">📊 Results & Impact</div>
+            <div class="proj-results">
+              <div class="r-stat"><div class="rnum">77</div><div class="rlbl">Test cases executed</div></div>
+              <div class="r-stat"><div class="rnum">27</div><div class="rlbl">Defects in JIRA</div></div>
+              <div class="r-stat"><div class="rnum">4</div><div class="rlbl">Testing areas covered</div></div>
+              <div class="r-stat"><div class="rnum">2</div><div class="rlbl">Environments (Chrome + Firefox)</div></div>
+              <div class="r-stat"><div class="rnum">63%</div><div class="rlbl">Pass rate</div></div>
+            </div>
+          </div>
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">⚙️ What I Did</div>
+          <p>
+            Designed and applied <strong>equivalence partitioning</strong> and <strong>boundary value analysis</strong>
+            to validate form fields (name, last name, card number, CVV). Executed functional and UI testing across
+            two environments — <strong>Chrome 800×600</strong> and <strong>Firefox 1920×1080</strong> — covering
+            4 areas: booking form design, payment method and "Add Card" window, "Book" button logic, and full
+            booking flow logic. Documented all defects in JIRA with severity and steps to reproduce.
+          </p>
+        </div>
+
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">✅ Learning</div>
+          <p>The product showed a solid functional base, but 27 critical defects were identified — mainly in the "Add Card" form where invalid cards could be added. This reinforced the importance of exhaustive boundary testing and cross-browser validation before product launch.</p>
+        </div>
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">🛠️ Skills</div>
+          <div class="badges" style="margin-top:.3rem">
+            <span class="badge badge-blue"><i class="fab fa-jira"></i> JIRA</span>
+            <span class="badge badge-pink"><i class="fab fa-figma"></i> Figma</span>
+            <span class="badge badge-blue"><i class="fas fa-project-diagram"></i> diagrams.net</span>
+            <span class="badge badge-teal">Manual Testing</span>
+            <span class="badge badge-teal">UI Testing</span>
+            <span class="badge badge-purple">Equivalence Partitioning</span>
+            <span class="badge badge-purple">Boundary Value Analysis</span>
+            <span class="badge badge-green">Cross-browser Testing</span>
+            <span class="badge badge-teal">Test Planning</span>
+
+          </div>
+        </div>
+
+        <!-- SCREENSHOTS -->
+        <div class="sc-section">
+          <div class="sc-title">📸 Project Screenshots</div>
+          <div class="sc-grid">
+            <div class="sc-card">
+              <div class="sc-img-wrap">
+                <img src="screenshots/jira-urban-routes-bugs.png" alt="JIRA Bug List Sprint 3" class="screenshot-img"/>
+              </div>
+              <div class="sc-caption">JIRA Bug List — Sprint 3 (27 defects)</div>
+            </div>
+            <div class="sc-card">
+              <div class="sc-img-wrap">
+                <img src="screenshots/jira-bug-detail-s3qg6-17.png" alt="Bug Report S3QG6-17" class="screenshot-img"/>
+              </div>
+              <div class="sc-caption">Bug Report Detail — S3QG6-17</div>
+            </div>
+            <div class="sc-card">
+              <div class="sc-img-wrap">
+                <img src="screenshots/test-cases-urban-routes.png" alt="Test Cases Spreadsheet" class="screenshot-img"/>
+              </div>
+              <div class="sc-caption">Test Cases Spreadsheet (77 cases)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="project-footer">
+        <a href="https://qaluna.atlassian.net/jira/software/projects/S3QG6/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Board</a>
+        <a href="https://qaluna.atlassian.net/browse/S3QG6-17" target="_blank" class="proj-link"><i class="fas fa-bug"></i> Sample Bug Report</a>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 2 ── -->
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-num">Project 02</div>
+          <div class="project-title">🛒 Urban Grocers</div>
+          <div class="project-sub">REST API Testing · TripleTen Bootcamp, Sprint 4 (2026)</div>
+        </div>
+        <span class="project-type"><i class="fas fa-code"></i> API Testing</span>
+      </div>
+      <div class="project-body">
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">🎯 Problem</div>
+          <p>Validate that the REST API for kit management and grocery delivery correctly handled requests — including happy-path scenarios, boundary conditions, missing fields, invalid data types, and error handling.</p>
+        </div>
+
+          <div class="proj-sec">
+            <div class="proj-sec-lbl">📊 Results & Impact</div>
+            <div class="proj-results">
+              <div class="r-stat"><div class="rnum">71</div><div class="rlbl">Test cases executed</div></div>
+              <div class="r-stat"><div class="rnum">37</div><div class="rlbl">Defects documented in JIRA</div></div>
+              <div class="r-stat"><div class="rnum">3</div><div class="rlbl">API endpoints covered</div></div>
+              <div class="r-stat"><div class="rnum">52%</div><div class="rlbl">Failure rate (critical)</div></div>
+            </div>
+          </div>
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">⚙️ What I Did</div>
+          <p>Designed and executed 71 test cases using <strong>Postman</strong> against three API endpoints:</p>
+          <ul class="api-list">
+            <li><code>POST /api/v1/kits</code> — kit creation, validating the <code>name</code> field with boundary values and invalid types</li>
+            <li><code>POST /api/v1/kits/:id/products</code> — adding products to a kit, validating unique product limits and duplicate IDs</li>
+            <li><code>POST /order-and-go/v1/delivery</code> — delivery feasibility, validating <code>deliveryTime</code>, <code>productsCount</code> and <code>productsWeight</code></li>
+          </ul>
+        </div>
+
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">✅ Learning</div>
+          <p>Discovered that the API accepted invalid requests (null fields, negative values, wrong data types) returning <code>200 OK</code> instead of the expected <code>400 Bad Request</code> errors. This experience reinforced the importance of testing not only happy paths but all boundary and negative scenarios in API validation.</p>
+        </div>
+
+        <div class="proj-sec">
+          <div class="proj-sec-lbl">🛠️ Skills</div>
+          <div class="badges" style="margin-top:.3rem">
+            <span class="badge badge-orange"><i class="fas fa-paper-plane"></i> Postman</span>
+            <span class="badge badge-blue"><i class="fab fa-jira"></i> JIRA</span>
+            <span class="badge badge-purple">REST API Testing</span>
+            <span class="badge badge-purple">Boundary Value Analysis</span>
+            <span class="badge badge-teal">Error Handling</span>
+            <span class="badge badge-teal">Functional Testing</span>
+          </div>
+        </div>
+
+        <!-- SCREENSHOTS -->
+        <div class="sc-section">
+          <div class="sc-title">📸 Project Screenshots</div>
+          <div class="sc-grid">
+            <div class="sc-card">
+              <div class="sc-img-wrap">
+                <img src="screenshots/postman-sprint4-collection.png" alt="Postman Collection Sprint 4" class="screenshot-img"/>
+              </div>
+              <div class="sc-caption">Postman Collection — Sprint 4</div>
+            </div>
+            <div class="sc-card">
+              <div class="sc-img-wrap">
+                <img src="screenshots/jira-urban-grocers-bugs.png" alt="JIRA Bug List Sprint 4" class="screenshot-img"/>
+              </div>
+              <div class="sc-caption">JIRA Bug List — Sprint 4 (37 defects)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="project-footer">
+        <a href="https://qaluna.atlassian.net/jira/software/projects/S4QG6/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Board</a>
+        <a href="https://qaluna.atlassian.net/browse/S4QG6-37" target="_blank" class="proj-link"><i class="fas fa-bug"></i> Sample Bug Report</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ ACHIEVEMENTS ══ -->
+<section id="achievements">
+  <div class="section-inner">
+    <p class="section-label">Track record</p>
+    <h2 class="section-title">Key Achievements</h2>
+    <div class="section-line"></div>
+    <div class="ach-list">
+      <div class="ach-card">
+        <div class="ach-icon"><i class="fas fa-bolt"></i></div>
+        <div class="ach-text">
+          <strong>Non-Conformity Closure Time: 12 months → 3 months</strong>
+          <p>Automated the follow-up process using Microsoft Power Automate, improving on-time closure rate from 30% to 90%.</p>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon"><i class="fas fa-award"></i></div>
+        <div class="ach-text">
+          <strong>GMP Audit Score: 92% → 98% — Zero Critical Findings</strong>
+          <p>Led external audits achieving 0 critical findings and significantly improved a key customer's GMP audit score.</p>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="ach-text">
+          <strong>ISO 27001 Certification — Formally Recognized by External Auditor</strong>
+          <p>Supported the ISO 27001 certification for the Software Development department; formally recognized by the external auditor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Let's talk</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line" style="margin:0 auto 2rem;"></div>
+    <p class="contact-desc">I'm actively looking for remote QA Engineer opportunities. Whether you want to discuss a role, a project, or just say hi — I'd love to hear from you.</p>
+    <div class="contact-cards">
+      <a href="mailto:yusistely.luna@gmail.com" class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <span class="cc-label">Email</span>
+        <span class="cc-value">yusistely.luna@gmail.com</span>
+      </a>
+      <a href="https://linkedin.com/in/yusistely-luna-iis" target="_blank" class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        <span class="cc-label">LinkedIn</span>
+        <span class="cc-value">yusistely-luna-iis</span>
+      </a>
+      <a href="https://github.com/yusistely-luna" target="_blank" class="contact-card">
+        <i class="fab fa-github"></i>
+        <span class="cc-label">GitHub</span>
+        <span class="cc-value">yusistely-luna</span>
+      </a>
+    </div>
+    <a href="CV_Yusistely_Luna_QA_Engineer_v1.pdf" class="btn btn-primary" target="_blank" download>
+      <i class="fas fa-file-download"></i> Download CV (English)
+    </a>
+  </div>
+</section>
+
+<!-- ══ MODAL SCREENSHOT FULLSCREEN ══ -->
+<div id="screenshotModal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;">
+  <span id="closeModal" style="position:absolute;top:32px;right:48px;font-size:3rem;color:#fff;cursor:pointer;font-family:sans-serif;z-index:10001">&times;</span>
+  <img id="modalImg" src="" alt="Screenshot" style="max-width:96vw;max-height:90vh;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);border:8px solid #fff;z-index:10000;object-fit:contain;background:#222"/>
+</div>
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>Built by <a href="https://github.com/yusistely-luna">Yusistely Luna</a> · QA Engineer Jr. · Toluca, Mexico · 2026</p>
+</footer>
+
+<!-- ══ SCRIPTS: THEME Y MODAL ══ -->
+<script>
+  // Theme toggle
+  const html        = document.documentElement;
+  const toggleBtn   = document.getElementById('themeToggle');
+  const themeIcon   = document.getElementById('themeIcon');
+  const STORAGE_KEY = 'yl-portfolio-theme';
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    themeIcon.className = theme === 'dark'
+      ? 'fas fa-moon theme-icon'
+      : 'fas fa-sun theme-icon';
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  // Load saved preference; default = light
+  const saved = localStorage.getItem(STORAGE_KEY) || 'light';
+  applyTheme(saved);
+
+  toggleBtn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Modal screenshots fullscreen
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('screenshotModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+    let lastScroll = 0;
+    document.querySelectorAll('.screenshot-img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.preventDefault();
+        lastScroll = window.scrollY;
+        modal.style.display = 'flex';
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeModalFn() {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, lastScroll);
+    }
+    closeModal.addEventListener('click', closeModalFn);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModalFn();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') closeModalFn();
+    });
+  });
+</script>
+
+</body>
+</html>
