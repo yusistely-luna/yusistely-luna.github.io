@@ -673,17 +673,12 @@
         <span class="project-type" style="background: var(--b-orange-bg); color: var(--b-orange-c);"><i class="fas fa-hourglass-half"></i> In Progress</span>
       </div>
       <div class="project-body">
-
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Open Library's public search feature — and the search API behind it — needs to handle a wide range of real-world queries (ambiguous terms, special characters, empty searches) without breaking or returning misleading results. This project tests whether the website's search/filter UI and the public search API behave consistently and correctly under those conditions.</p>
+          <p>Self-initiated project, outside any bootcamp: testing the search feature on a real public product — openlibrary.org — on the web and at the API level. 36 test cases designed (16 web + 20 API); execution and defect reports in progress.</p>
         </div>
-
-        <div class="proj-sec" style="opacity:.65;">
-          <div class="proj-sec-lbl">⏳ Coming soon</div>
-          <p>Test cases, Postman API results, defect reports, and key findings — check back shortly.</p>
-        </div>
-
+      </div>
+      <div class="project-footer">
+        <a href="https://github.com/yusistely-luna/open-library" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
       </div>
     </div><!-- ══ PROJECT 07 — FINAL PROJECT ══ -->
     <div class="project-card" style="border-color: var(--teal-l); box-shadow: 0 0 0 2px var(--teal-pale);">
@@ -698,49 +693,17 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>End-to-end quality assurance of Urban Scooter, a new scooter rental platform. The project covered four major areas in three weeks: QA theory, a web app (order form + order status flow), a mobile courier app (notifications + no-internet handling), and a REST API (courier management and order tracking). Each area required designing tests from requirements, executing them, and documenting defects professionally in JIRA.</p>
+          <p>End-to-end QA of a scooter rental platform across <strong>web, mobile, and API</strong> in three weeks — from a requirements mind map to 148 test cases and 81 documented defects. Cross-browser testing confirmed the same bugs in both Chrome and Opera, and API testing added a layer most testers skip: validating the database actually changed after each request.</p>
         </div>
 
         <div class="proj-sec">
           <div class="proj-sec-lbl">📊 Results &amp; Impact</div>
           <div class="proj-results">
-            <div class="r-stat"><div class="rnum">81</div><div class="rlbl">Defects documented in JIRA</div></div>
+            <div class="r-stat"><div class="rnum">81</div><div class="rlbl">Defects documented</div></div>
             <div class="r-stat"><div class="rnum">3</div><div class="rlbl">Platforms (web · mobile · API)</div></div>
             <div class="r-stat"><div class="rnum">2</div><div class="rlbl">Browsers (Chrome + Opera)</div></div>
             <div class="r-stat"><div class="rnum">4</div><div class="rlbl">Tasks completed</div></div>
           </div>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p><strong>Task 1 — QA Theory:</strong> 23 questions covering bug reports, HTTP protocol, client-server architecture, SQL (JOIN, GROUP BY, ORDER BY), JSON correction, equivalence classes, boundary values, and automation criteria.</p>
-          <p><strong>Task 2 — Web App (Urban Scooter):</strong></p>
-          <ul class="api-list">
-            <li>Built a detailed <strong>mental map</strong> of the order form, covering functional behavior, validations, character limits, gray areas, and visual requirements</li>
-            <li><strong>Checklist "Order Status" (58 items)</strong>: validated order data display, timeline state transitions, cancellation flow, and delayed delivery behavior — in Chrome and Opera across two resolutions</li>
-            <li><strong>Equivalence classes (50+ tests)</strong> for 8 form fields: name, last name, address, metro station, phone, delivery date, rental period, and comment — with boundary values and gray area identification</li>
-            <li>Documented <strong>~35 web bugs (USP)</strong> with video evidence and environment details</li>
-          </ul>
-          <p><strong>Task 3 — Mobile App (Android):</strong></p>
-          <ul class="api-list">
-            <li><strong>40 test cases</strong> on Android Studio emulator (Pixel 2, API 37)</li>
-            <li>Push notification tests: exact <strong>boundary values at 21:59</strong> (2h before deadline), with app in foreground/background/closed/locked/other-app states</li>
-            <li>No-internet-access tests across 10+ in-app actions: login, navigation, order acceptance, order completion, session logout</li>
-            <li>Documented <strong>~11 mobile bugs (USA)</strong></li>
-          </ul>
-          <p><strong>Task 4 — REST API (Postman):</strong></p>
-          <ul class="api-list">
-            <li>3 endpoints: <code>POST /api/v1/courier</code>, <code>DELETE /api/v1/courier/:id</code>, <code>GET /api/v1/orders/track</code>, <code>PUT /api/v1/orders/cancel</code></li>
-            <li>Tested 201 / 400 / 404 / 409 responses with positive, negative, boundary, and type-invalid scenarios</li>
-            <li>Validated database state via SQL after critical operations (courier creation, deletion, order cancellation)</li>
-            <li>Documented <strong>38 API bugs (USAB)</strong></li>
-          </ul>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>A real QA project isn't just running test cases — it's interpreting requirements, spotting gray areas before testing, and deciding what to prioritize under time constraints. Video evidence in bug reports removes all ambiguity for developers. Cross-browser testing revealed the same defects across both browsers consistently, confirming they were product bugs rather than environment-specific issues. The API section taught me that database validation (confirming the data actually changed) is a separate and essential layer beyond HTTP response codes.</p>
         </div>
 
         <div class="proj-sec">
@@ -755,23 +718,17 @@
             <span class="badge badge-green"><i class="fab fa-android"></i> Android Studio</span>
             <span class="badge badge-pink"><i class="fab fa-figma"></i> Figma</span>
             <span class="badge badge-blue"><i class="fas fa-project-diagram"></i> diagrams.net</span>
-            <span class="badge badge-purple">Mental Map</span>
             <span class="badge badge-purple">Equivalence Partitioning</span>
             <span class="badge badge-purple">Boundary Value Analysis</span>
             <span class="badge badge-purple">REST API Testing</span>
             <span class="badge badge-purple">SQL (JOIN / GROUP BY)</span>
-            <span class="badge badge-teal">Gray Area Identification</span>
-            <span class="badge badge-teal">Video Evidence</span>
             <span class="badge badge-teal">Database Validation</span>
           </div>
         </div>
 
       </div>
       <div class="project-footer">
-        <a href="https://yusistelyluna.atlassian.net/jira/software/projects/USP/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Web (USP)</a>
-        <a href="https://yusistelyluna.atlassian.net/jira/software/projects/USA/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Mobile (USA)</a>
-        <a href="https://yusistelyluna.atlassian.net/jira/software/projects/USAB/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA API (USAB)</a>
-        <a href="https://drive.google.com/file/d/1smDXsnLMZ5a-Lr54eIqrvw9EIOdfNSvk/view" target="_blank" class="proj-link"><i class="fas fa-sitemap"></i> Mental Map</a>
+        <a href="https://github.com/yusistely-luna/qa-project-urban-scooter" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
       </div>
     </div>
 
@@ -788,8 +745,7 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Automate the complete taxi-ordering happy path on the Urban Routes web app using Selenium WebDriver and the Page Object Model (POM) pattern. The suite must cover 11 scenarios — from setting the route to verifying the driver-arrival modal — while handling real-world browser challenges: hidden elements, dynamic buttons, network-intercepted SMS codes, and long async waits.</p>
+          <p>Automated the full taxi-booking happy path — 11 scenarios from setting a route to confirming a driver — with a Selenium + Page Object Model framework. Solved real automation problems along the way: an SMS code pulled straight from Chrome's network logs instead of a real SMS service, and a 60-second explicit wait for a slow modal that would've made a naive test flaky.</p>
         </div>
 
         <div class="proj-sec">
@@ -800,29 +756,6 @@
             <div class="r-stat"><div class="rnum">30+</div><div class="rlbl">Locators defined in Page Object</div></div>
             <div class="r-stat"><div class="rnum">100%</div><div class="rlbl">Tutor approval rate</div></div>
           </div>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p>Built a structured Selenium/Pytest framework following the <strong>Page Object Model</strong> pattern, with 4 modules and a clear separation of concerns:</p>
-          <ul class="api-list">
-            <li><code>data/data.py</code> — all test data (URL, addresses, phone, card, message)</li>
-            <li><code>pages/urban_routes_page.py</code> — 30+ locators (By.ID, CSS, XPath) and page-action methods; hidden elements use <code>presence_of_element_located</code>, visible ones use <code>visibility_of_element_located</code></li>
-            <li><code>helpers/retrieve_code.py</code> — intercepts the SMS confirmation code from Chrome's <strong>performance network logs</strong> (<code>goog:loggingPrefs</code>)</li>
-            <li><code>tests/test_urban_routes.py</code> — 11 ordered tests with <code>setup_class</code> / <code>teardown_class</code> for browser lifecycle</li>
-          </ul>
-          <p>Key technical challenges solved:</p>
-          <ul class="api-list">
-            <li>CVV field blur: simulated <strong>TAB keypress</strong> (<code>Keys.TAB</code>) after entering the code to trigger the <code>blur</code> event and enable the "Agregar" button</li>
-            <li>SMS code retrieval from browser <strong>network logs</strong> instead of a real SMS service</li>
-            <li>Driver-arrival modal: used a <strong>60-second explicit wait</strong> separate from the default 5s wait</li>
-            <li>Ice cream counter max: verified that <code>'disabled'</code> appears in the "+" button class attribute after reaching the limit</li>
-          </ul>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>The Page Object Model transforms tests from fragile script sequences into maintainable, readable workflows — if a locator changes, only the Page Object needs updating, not every test. Hidden/disabled elements require <code>presence_of_element_located</code> instead of visibility-based waits; using the wrong one causes flaky failures. Intercepting SMS codes from Chrome's performance logs is a real-world automation technique that avoids dependency on external services during testing.</p>
         </div>
 
         <div class="proj-sec">
@@ -861,8 +794,7 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Automate a 9-case checklist validating the <code>name</code> field of the Urban Grocers kit creation API endpoint (<code>POST /api/v1/kits</code>). Tests cover boundary values, special characters, data types, spaces, and missing parameters — both positive (HTTP 201) and negative (HTTP 400) scenarios.</p>
+          <p>Automated 9 tests validating the <code>name</code> field on Urban Grocers' kit-creation endpoint — boundary lengths, special characters, wrong types, and missing parameters. Built with a two-step auth flow (create user → get token → call the endpoint), a real-world pattern for API automation, with positive and negative assertions kept in separate, single-purpose functions.</p>
         </div>
 
         <div class="proj-sec">
@@ -873,23 +805,6 @@
             <div class="r-stat"><div class="rnum">5 / 4</div><div class="rlbl">Positive / Negative tests</div></div>
             <div class="r-stat"><div class="rnum">100%</div><div class="rlbl">Tutor approval rate</div></div>
           </div>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p>Built a modular Python/Pytest project with 6 files and a clean separation of concerns:</p>
-          <ul class="api-list">
-            <li><code>configuration.py</code> — API base URL and endpoint paths</li>
-            <li><code>data.py</code> — shared request bodies (<code>headers</code>, <code>user_body</code>, <code>kit_body</code>)</li>
-            <li><code>sender_stand_request.py</code> — <code>post_new_user()</code> and <code>post_new_client_kit()</code> with Bearer token injection</li>
-            <li><code>create_kit_name_kit_test.py</code> — 9 independent test functions using 3 helpers: <code>get_kit_body(name)</code>, <code>get_new_user_token()</code>, <code>positive_assert()</code> / <code>negative_assert()</code></li>
-          </ul>
-          <p>Tests validated: min length (1 char), max length (511 chars), over-limit (512), empty string, missing param, special characters, spaces, numbers, and wrong type (integer instead of string). Committed to GitHub via Git CLI.</p>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>Structuring tests into independent functions that each have a single purpose makes failures easier to diagnose and the suite easier to maintain. Using <code>.copy()</code> on shared request bodies prevents state leaking between tests. The two-step auth flow — create user → get token → use token in kit request — is a real-world pattern for API automation. Some tests returned <code>FAILED</code> as expected: validating that the API correctly rejects invalid input is as important as confirming it accepts valid data.</p>
         </div>
 
         <div class="proj-sec">
@@ -926,8 +841,7 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Two parallel challenges: (1) use the Linux command line to find specific IP addresses in remote server logs and isolate HTTP 400/500 errors into structured files; (2) query a PostgreSQL database of Chicago taxi trips to answer real business questions about fleet size, company distribution, weather impact, and trip volume.</p>
+          <p>Two technical exercises: isolating a specific IP range and splitting HTTP 400/500 errors into structured files on a remote Linux server with <code>grep</code>, then writing 4 SQL queries against a Chicago taxi-trip database to confirm a fleet shortage, flag under-sized companies, classify weather by hour, and compare trip volume across two dates — internalizing the difference between <code>WHERE</code> and <code>HAVING</code> along the way.</p>
         </div>
 
         <div class="proj-sec">
@@ -938,27 +852,6 @@
             <div class="r-stat"><div class="rnum">4</div><div class="rlbl">SQL queries designed</div></div>
             <div class="r-stat"><div class="rnum">100%</div><div class="rlbl">Approval rate</div></div>
           </div>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p><strong>Console (Linux/Bash):</strong> Navigated a remote server and used <code>grep -R</code> with a regex anchor (<code>^233.201</code>) to filter logs by IP prefix across multiple directories. Created a <code>bug1/events/</code> directory structure, extracted the target date's log file as <code>main.txt</code>, and separated HTTP errors into dedicated files:</p>
-          <ul class="api-list">
-            <li><code>grep '\" 400' main.txt &gt; 400.txt</code> — isolated all client error entries</li>
-            <li><code>grep '\" 500' main.txt &gt; 500.txt</code> — isolated all server error entries</li>
-          </ul>
-          <p><strong>SQL (PostgreSQL — Chicago Taxi DB):</strong> Wrote 4 queries across 4 related tables (<code>cabs</code>, <code>trips</code>, <code>weather_records</code>, <code>neighborhoods</code>):</p>
-          <ul class="api-list">
-            <li><strong>Fleet count:</strong> <code>COUNT(DISTINCT vehicle_id)</code> → 5,529 unique vehicles (vs. 10,550 planned — shortage confirmed)</li>
-            <li><strong>Company distribution:</strong> <code>GROUP BY + HAVING COUNT(*) &lt; 100 ORDER BY cnt DESC</code> → 51 companies with under 100 cabs</li>
-            <li><strong>Weather classification:</strong> <code>CASE WHEN description ILIKE '%rain%' OR '%storm%'</code> → labeled each hour Good/Bad for a 24-hour window</li>
-            <li><strong>Trip volume by company:</strong> <code>INNER JOIN cabs + trips + COUNT(trip_id)</code> → trip totals for Nov 15–16, 2017, ranked by activity</li>
-          </ul>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>Discovered that the <code>[45]00</code> regex pattern is more efficient than two separate greps when filtering by HTTP error family — a key pattern for log analysis at scale. In SQL, internalized the difference between <code>WHERE</code> (filters rows before grouping) and <code>HAVING</code> (filters after aggregation), and learned to join <code>trips</code> with <code>weather_records</code> via matching timestamps since there is no direct foreign key between them.</p>
         </div>
 
         <div class="proj-sec">
@@ -976,6 +869,9 @@
         </div>
 
       </div>
+      <div class="project-footer">
+        <a href="https://github.com/yusistely-luna/console-sql-chicago-taxis" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
+      </div>
     </div>
 
     <!-- ══ PROJECT 03 ══ -->
@@ -991,37 +887,17 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Test the first Android version of Urban.Lunch — an app for ordering meals from city restaurants and picking them up at designated collection points. The goal was to validate the complete order flow across 5 screens using a checklist designed from product requirements, including both positive and <strong>negative test scenarios</strong>.</p>
+          <p>Tested the first Android build of Urban.Lunch — 62 cases across 6 screens on an emulated Pixel 10 Pro XL. Navigation and order tracking came back rock-solid (100% pass), but negative testing paid off fast: the dish counter accepted <strong>negative values</strong> and lost selected quantities on scroll, concentrating 7 of the 8 defects found in the core ordering flow.</p>
         </div>
 
         <div class="proj-sec">
           <div class="proj-sec-lbl">📊 Results &amp; Impact</div>
           <div class="proj-results">
             <div class="r-stat"><div class="rnum">62</div><div class="rlbl">Test cases executed</div></div>
-            <div class="r-stat"><div class="rnum">8</div><div class="rlbl">Defects documented in JIRA</div></div>
+            <div class="r-stat"><div class="rnum">8</div><div class="rlbl">Defects documented</div></div>
             <div class="r-stat"><div class="rnum">6</div><div class="rlbl">Functional areas covered</div></div>
             <div class="r-stat"><div class="rnum">87%</div><div class="rlbl">Pass rate</div></div>
           </div>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p>Set up and tested the Urban.Lunch app on an emulated <strong>Pixel 10 Pro XL</strong> (Android 17) via Android Studio, validating connectivity over WiFi and mobile data. Designed and executed 62 test cases — including positive and negative scenarios — across 6 functional areas:</p>
-          <ul class="api-list">
-            <li><strong>Collection point selection</strong> — map display, tap logic, multi-select prevention · 12/12 passed ✅</li>
-            <li><strong>Dish selection</strong> — counter behavior, detail sync, scroll persistence · 17/21 passed · 4 bugs 🐛</li>
-            <li><strong>Order confirmation</strong> — quantities, total calculation, progress indicator · 6/9 passed · 3 bugs 🐛</li>
-            <li><strong>Order tracking</strong> — map routes, timers, background behavior (calls, apps) · 11/11 passed ✅</li>
-            <li><strong>Order delivered screen</strong> — delivery completion and redirect flow · 3/4 passed · 1 bug 🐛</li>
-            <li><strong>General</strong> — geolocation permissions, WiFi/data, screen rotation · 5/5 passed ✅</li>
-          </ul>
-          <p>All 8 defects were documented in JIRA with numbered reproduction steps, expected vs actual results, environment details (device, OS, app version, network), and attached evidence (screenshots + video).</p>
-        </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>Navigation and tracking screens were fully stable (100% pass rate), but the core feature — dish counter and cart management — concentrated 7 of 8 defects. The most critical finding: the counter accepted <strong>negative values</strong> (S6QG6-2) and lost selected quantities on scroll (S6QG6-4), making the ordering flow unreliable. Negative testing was essential — without it, these bugs would have reached production. This project reinforced that validating what an app <em>should prevent</em> is as important as validating what it should do.</p>
         </div>
 
         <div class="proj-sec">
@@ -1041,8 +917,7 @@
 
       </div>
       <div class="project-footer">
-        <a href="https://qaluna.atlassian.net/jira/software/projects/S6QG6/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Board</a>
-        <a href="https://qaluna.atlassian.net/browse/S6QG6-2" target="_blank" class="proj-link"><i class="fas fa-bug"></i> Sample Bug Report</a>
+        <a href="https://github.com/yusistely-luna/qa-project-urban-lunch" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
       </div>
     </div>
 
@@ -1059,35 +934,18 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Validate that the REST API for kit management and grocery delivery correctly handled requests — including happy-path scenarios, boundary conditions, missing fields, invalid data types, and error handling.</p>
+          <p>Manually tested three API endpoints for kit creation and delivery — 72 cases covering valid, boundary, null, and wrong-type input. Found a consistent pattern worth flagging to any dev team: invalid requests kept returning <code>200 OK</code> instead of the <code>400 Bad Request</code> they should have.</p>
         </div>
 
           <div class="proj-sec">
             <div class="proj-sec-lbl">📊 Results & Impact</div>
             <div class="proj-results">
               <div class="r-stat"><div class="rnum">71</div><div class="rlbl">Test cases executed</div></div>
-              <div class="r-stat"><div class="rnum">38</div><div class="rlbl">Defects documented in JIRA</div></div>
+              <div class="r-stat"><div class="rnum">38</div><div class="rlbl">Defects documented</div></div>
               <div class="r-stat"><div class="rnum">3</div><div class="rlbl">API endpoints covered</div></div>
               <div class="r-stat"><div class="rnum">53.5%</div><div class="rlbl">Failure rate</div></div>
             </div>
           </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p>Designed and executed 71 test cases using <strong>Postman</strong> against three API endpoints:</p>
-          <ul class="api-list">
-            <li><code>POST /api/v1/kits</code> — kit creation, validating the <code>name</code> field with boundary values and invalid types</li>
-            <li><code>POST /api/v1/kits/:id/products</code> — adding products to a kit, validating unique product limits and duplicate IDs</li>
-            <li><code>POST /order-and-go/v1/delivery</code> — delivery feasibility, validating <code>deliveryTime</code>, <code>productsCount</code> and <code>productsWeight</code></li>
-          </ul>
-        </div>
-
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>Discovered that the API accepted invalid requests (null fields, negative values, wrong data types) returning <code>200 OK</code> instead of the expected <code>400 Bad Request</code> errors. This experience reinforced the importance of testing not only happy paths but all boundary and negative scenarios in API validation.</p>
-        </div>
 
         <div class="proj-sec">
           <div class="proj-sec-lbl">🛠️ Skills</div>
@@ -1128,8 +986,7 @@
 
       </div>
       <div class="project-footer">
-        <a href="https://qaluna.atlassian.net/jira/software/projects/S4QG6/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Board</a>
-        <a href="https://qaluna.atlassian.net/browse/S4QG6-37" target="_blank" class="proj-link"><i class="fas fa-bug"></i> Sample Bug Report</a>
+        <a href="https://github.com/yusistely-luna/qa-project-urban-grocers-api" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
       </div>
     </div>
 
@@ -1146,37 +1003,19 @@
       <div class="project-body">
 
         <div class="proj-sec">
-          <div class="proj-sec-lbl">🎯 Problem</div>
-          <p>Validate the design and functionality of a car-sharing web application across multiple environments, ensuring the booking flow, payment form, and UI elements worked correctly according to specifications.</p>
+          <p>Applied equivalence partitioning and boundary value analysis to a car-sharing booking form across two browsers. 27 defects found, most concentrated in the "Add Card" window — where invalid card data was accepted without validation, a real risk for a payment flow.</p>
         </div>
 
           <div class="proj-sec">
             <div class="proj-sec-lbl">📊 Results & Impact</div>
             <div class="proj-results">
               <div class="r-stat"><div class="rnum">77</div><div class="rlbl">Test cases executed</div></div>
-              <div class="r-stat"><div class="rnum">27</div><div class="rlbl">Defects in JIRA</div></div>
+              <div class="r-stat"><div class="rnum">27</div><div class="rlbl">Defects found</div></div>
               <div class="r-stat"><div class="rnum">4</div><div class="rlbl">Testing areas covered</div></div>
               <div class="r-stat"><div class="rnum">2</div><div class="rlbl">Environments (Chrome + Firefox)</div></div>
               <div class="r-stat"><div class="rnum">63%</div><div class="rlbl">Pass rate</div></div>
             </div>
           </div>
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">⚙️ What I Did</div>
-          <p>
-            Designed and applied <strong>equivalence partitioning</strong> and <strong>boundary value analysis</strong>
-            to validate form fields (name, last name, card number, CVV). Executed functional and UI testing across
-            two environments — <strong>Chrome 800×600</strong> and <strong>Firefox 1920×1080</strong> — covering
-            4 areas: booking form design, payment method and "Add Card" window, "Book" button logic, and full
-            booking flow logic. Documented all defects in JIRA with severity and steps to reproduce.
-          </p>
-        </div>
-
-
-        <div class="proj-sec">
-          <div class="proj-sec-lbl">✅ Learning</div>
-          <p>The product showed a solid functional base, but 27 critical defects were identified — mainly in the "Add Card" form where invalid cards could be added. This reinforced the importance of exhaustive boundary testing and cross-browser validation before product launch.</p>
-        </div>
 
         <div class="proj-sec">
           <div class="proj-sec-lbl">🛠️ Skills</div>
@@ -1219,10 +1058,6 @@
           </div>
         </div>
 
-      </div>
-      <div class="project-footer">
-        <a href="https://qaluna.atlassian.net/jira/software/projects/S3QG6/boards" target="_blank" class="proj-link"><i class="fab fa-jira"></i> JIRA Board</a>
-        <a href="https://qaluna.atlassian.net/browse/S3QG6-17" target="_blank" class="proj-link"><i class="fas fa-bug"></i> Sample Bug Report</a>
       </div>
     </div>
 
