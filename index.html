@@ -154,8 +154,8 @@
       letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1.1rem;
     }
     .hero-name {
-      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
-      font-weight: 800; letter-spacing: -1px; line-height: 1.1;
+      font-size: clamp(1.9rem, 4.6vw, 3rem);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.15;
       margin-bottom: .5rem; color: var(--text);
     }
     .hero-name span { color: var(--teal-l); }
@@ -398,81 +398,74 @@
     .ach-card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: 12px; padding: 1.2rem 1.6rem;
-      display: flex; gap: 1.1rem; align-items: flex-start;
-      box-shadow: var(--shadow);
-      transition: border-color .2s, transform .2s, background .3s;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: border-color .3s, transform .2s, background .3s;
     }
     .ach-card:hover { border-color: var(--teal-l); transform: translateX(4px); }
     .ach-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: var(--teal-pale); flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--teal-pale); color: var(--teal-l);
       display: flex; align-items: center; justify-content: center;
-      color: var(--teal-l); font-size: 1rem;
+      font-size: 1.1rem; flex-shrink: 0;
     }
-    .ach-text strong { display: block; font-size: .95rem; margin-bottom: .2rem; color: var(--text); }
-    .ach-text p { color: var(--muted); font-size: .85rem; }
+    .ach-title { font-weight: 700; margin-bottom: .3rem; color: var(--text); }
+    .ach-desc  { color: var(--muted); font-size: .9rem; }
 
     /* ══════════════════════════════════════
        CONTACT
     ══════════════════════════════════════ */
-    #contact { background: var(--bg2); text-align: center; transition: background .3s; }
-    .contact-desc { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
-    .contact-cards { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.2rem; }
+    #contact {
+      background: var(--bg2);
+      text-align: center;
+      transition: background .3s;
+    }
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+    #contact .section-line { margin-left: auto; margin-right: auto; }
+    .contact-desc { color: var(--muted); margin-bottom: 2rem; font-size: .97rem; }
+    .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
     .contact-card {
       background: var(--bg); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.3rem 1.7rem; min-width: 185px;
+      border-radius: 12px; padding: 1.4rem 1rem;
       text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column; align-items: center; gap: .45rem;
-      box-shadow: var(--shadow);
       transition: all .2s;
     }
-    .contact-card:hover { border-color: var(--teal-l); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .contact-card i { font-size: 1.3rem; color: var(--teal-l); }
-    .cc-label { font-size: .7rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-    .cc-value { font-size: .87rem; font-weight: 500; word-break: break-all; color: var(--text2); }
+    .contact-card:hover { border-color: var(--teal-l); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .contact-card i { font-size: 1.5rem; color: var(--teal-l); margin-bottom: .6rem; display: block; }
+    .cc-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
+    .cc-value { font-size: .85rem; font-weight: 600; word-break: break-word; }
 
-    /* ══════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════ */
     footer {
-      background: var(--bg); border-top: 1px solid var(--border);
-      text-align: center; padding: 1.6rem 2rem;
-      color: var(--muted); font-size: .82rem;
-      transition: background .3s, border-color .3s;
+      text-align: center; padding: 2rem; color: var(--muted); font-size: .82rem;
+      border-top: 1px solid var(--border);
+      transition: border-color .3s;
     }
     footer a { color: var(--teal-l); text-decoration: none; }
 
     /* ══════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════ */
-    @media (max-width: 680px) {
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
       .about-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      nav { padding: 0 1.2rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links .hide-sm { display: none; }
+      .contact-cards { grid-template-columns: 1fr; }
+      section { padding: 3.5rem 1.2rem; }
       .project-header { flex-direction: column; }
-      .project-body, .project-footer { padding: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
 <nav>
   <div class="nav-brand">Yusistely Luna</div>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li class="hide-sm"><a href="#stack">Stack</a></li>
+      <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <!-- Theme toggle -->
-    <div style="display:flex;align-items:center;gap:.5rem">
-      <i class="fas fa-sun theme-icon" id="themeIcon"></i>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
-    </div>
+    <div class="theme-toggle" id="themeToggle" title="Toggle dark mode"></div>
   </div>
 </nav>
 
@@ -487,7 +480,7 @@
     </div>
 
     <div class="hero-badge">🔍 Open to Remote Opportunities</div>
-    <h1 class="hero-name">Yusistely <span>Luna</span></h1>
+    <h1 class="hero-name">15 years catching errors.<br>Now doing it in QA.</h1>
     <div class="hero-roles">
       <span class="role-pill">QA Engineer Jr.</span>
       <span class="role-pill">Manual Testing</span>
@@ -496,8 +489,9 @@
       <span class="role-pill">Postman</span>
     </div>
     <p class="hero-desc">
-      Industrial Engineer turned QA Engineer — 15 years preventing costly errors at multinationals,
-      now applying that rigor to manual, web, API, mobile, and automated software testing.
+      I'm Yusistely Luna — an Industrial Engineer turned QA Engineer, trained at the TripleTen Latam Bootcamp.
+      15 years preventing costly errors at multinationals like Tupperware, DuPont, and Procter &amp; Gamble,
+      now applying that same rigor to manual, web, API, mobile, and automated software testing.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
@@ -536,35 +530,22 @@
     <div class="about-grid">
       <div class="about-text">
         <p class="lead">
-          🔍 I am passionate about doing things well and doing them with purpose — whether designing a test case,
-          leading an audit, or guiding a meditation at the start of a training session.
+          🔍 I'm passionate about doing things well and with purpose — whether designing a test case or leading an audit.
         </p>
         <p>
-          I began my career as an Industrial Engineer at global companies like
-          <strong>Tupperware, DuPont and Procter &amp; Gamble</strong>, focused on quality and continuous improvement.
-          Later, at <strong>TSYS</strong>, I moved into tech, becoming a bridge between business and the Software
-          Development team — coordinating annual OWASP training, gathering evidence for cybersecurity audits,
-          updating compliance procedures, and reviewing WAF alerts with developers to resolve false positives.
+          I began my career as an Industrial Engineer at <strong>Tupperware, DuPont, and Procter &amp; Gamble</strong>, focused on quality and continuous improvement. Later, at <strong>TSYS</strong>, I became a bridge between business and Software Development — coordinating OWASP training, gathering evidence for cybersecurity audits, and reviewing WAF alerts with developers.
         </p>
         <p>
-          Today I'm a QA Engineer Jr. trained at the <strong>TripleTen Latam Bootcamp</strong>, with hands-on
-          experience in manual, web, API, mobile, and automated testing. My final project: end-to-end QA across a
-          full ride-booking platform — covering web, mobile, API, and backend —
-          <strong>documenting 81 defects in JIRA.</strong>
+          Today I'm a QA Engineer Jr. trained at the <strong>TripleTen Latam Bootcamp</strong>, with hands-on experience in manual, web, API, mobile, and automated testing. My capstone project: end-to-end QA across a ride-booking platform built for the bootcamp — <strong>154 defects documented</strong> across web, mobile, and API.
         </p>
         <p>
-          <strong>What this means for a hiring team:</strong> I combine fresh QA skills with 15 years of real
-          experience preventing costly errors, leading audits, and translating between technical and business teams
-          — so issues get caught early, communicated clearly, and resolved fast.
-        </p>
-        <p>
-          💻 <strong>Core skills:</strong> Manual, Web &amp; API Testing (Postman, JIRA) · Automation Fundamentals (Python, Pytest, PyCharm) · SQL Fundamentals · ISO 9001/27001
+          💻 <strong>Core skills:</strong> Manual, Web &amp; API Testing (Postman, JIRA) · Automation Fundamentals (Python, Pytest) · SQL · ISO 9001/27001
         </p>
       </div>
       <div class="stats-grid">
         <div class="stat-card"><div class="num">15+</div><div class="lbl">Years in quality &amp; process improvement at multinationals</div></div>
         <div class="stat-card"><div class="num">340+</div><div class="lbl">Test cases designed &amp; executed across bootcamp projects</div></div>
-        <div class="stat-card"><div class="num">153</div><div class="lbl">Defects documented in JIRA (web · mobile · API)</div></div>
+        <div class="stat-card"><div class="num">154</div><div class="lbl">Defects found across bootcamp QA projects (web · mobile · API)</div></div>
         <div class="stat-card"><div class="num">0</div><div class="lbl">Critical findings in ISO external audits led</div></div>
       </div>
     </div>
@@ -581,19 +562,19 @@
     <div class="stack-cat">
       <div class="cat-title">🧪 QA &amp; Testing</div>
       <div class="badges">
-        <span class="badge badge-teal"><i class="fas fa-check-double"></i> Manual Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-globe"></i> Web Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-plug"></i> API Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-mobile-alt"></i> Mobile Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-globe"></i> End-to-End Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-file-alt"></i> Test Case Design</span>
-        <span class="badge badge-teal"><i class="fas fa-list-ul"></i> Checklist Design</span>
-        <span class="badge badge-teal"><i class="fas fa-clipboard-list"></i> Test Planning</span>
-        <span class="badge badge-teal"><i class="fas fa-file-medical-alt"></i> Test Report Writing</span>
-        <span class="badge badge-teal"><i class="fas fa-cogs"></i> Functional Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-redo"></i> Regression Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-desktop"></i> Cross-browser Testing</span>
-        <span class="badge badge-teal"><i class="fas fa-times-circle"></i> Negative Testing</span>
+        <span class="badge badge-teal">Manual Testing</span>
+        <span class="badge badge-teal">Web Testing</span>
+        <span class="badge badge-teal">API Testing</span>
+        <span class="badge badge-teal">Mobile Testing</span>
+        <span class="badge badge-teal">End-to-End Testing</span>
+        <span class="badge badge-teal">Test Case Design</span>
+        <span class="badge badge-teal">Checklist Design</span>
+        <span class="badge badge-teal">Test Planning</span>
+        <span class="badge badge-teal">Test Report Writing</span>
+        <span class="badge badge-teal">Functional Testing</span>
+        <span class="badge badge-teal">Regression Testing</span>
+        <span class="badge badge-teal">Cross-browser Testing</span>
+        <span class="badge badge-teal">Negative Testing</span>
       </div>
     </div>
 
@@ -605,10 +586,9 @@
         <span class="badge badge-pink"><i class="fab fa-figma"></i> Figma</span>
         <span class="badge badge-blue"><i class="fas fa-project-diagram"></i> diagrams.net</span>
         <span class="badge badge-green"><i class="fab fa-android"></i> Android Studio</span>
-        <span class="badge badge-green"><i class="fas fa-terminal"></i> Linux CLI</span>
+        <span class="badge badge-purple"><i class="fas fa-terminal"></i> Linux CLI</span>
         <span class="badge badge-blue"><i class="fas fa-database"></i> PostgreSQL</span>
-        <span class="badge badge-blue"><i class="fab fa-git-alt"></i> Git</span>
-        <span class="badge badge-blue"><i class="fas fa-bug"></i> Bug Tracking</span>
+        <span class="badge badge-teal"><i class="fab fa-git-alt"></i> Git</span>
         <span class="badge badge-green"><i class="fab fa-github"></i> GitHub</span>
       </div>
     </div>
@@ -616,16 +596,16 @@
     <div class="stack-cat">
       <div class="cat-title">📐 Techniques</div>
       <div class="badges">
-        <span class="badge badge-purple"><i class="fas fa-equals"></i> Equivalence Partitioning</span>
-        <span class="badge badge-purple"><i class="fas fa-ruler-combined"></i> Boundary Value Analysis</span>
-        <span class="badge badge-purple"><i class="fas fa-code"></i> REST API Testing</span>
-        <span class="badge badge-purple"><i class="fas fa-sitemap"></i> Decision Tables</span>
-        <span class="badge badge-purple"><i class="fas fa-database"></i> SQL Queries</span>
-        <span class="badge badge-purple"><i class="fas fa-search"></i> Log Analysis</span>
-        <span class="badge badge-purple"><i class="fas fa-filter"></i> Regex (grep)</span>
-        <span class="badge badge-purple"><i class="fas fa-chart-bar"></i> Data Analysis</span>
-        <span class="badge badge-purple"><i class="fas fa-project-diagram"></i> Mental Mapping</span>
-        <span class="badge badge-purple"><i class="fas fa-question-circle"></i> Gray Area Identification</span>
+        <span class="badge badge-purple">Equivalence Partitioning</span>
+        <span class="badge badge-purple">Boundary Value Analysis</span>
+        <span class="badge badge-purple">REST API Testing</span>
+        <span class="badge badge-purple">Decision Tables</span>
+        <span class="badge badge-purple">SQL Queries</span>
+        <span class="badge badge-purple">Log Analysis</span>
+        <span class="badge badge-purple">Regex (grep)</span>
+        <span class="badge badge-purple">Data Analysis</span>
+        <span class="badge badge-purple">Mental Mapping</span>
+        <span class="badge badge-purple">Gray Area Identification</span>
       </div>
     </div>
 
@@ -635,21 +615,21 @@
         <span class="badge badge-orange"><i class="fab fa-python"></i> Python</span>
         <span class="badge badge-orange"><i class="fas fa-robot"></i> Selenium WebDriver</span>
         <span class="badge badge-orange"><i class="fas fa-vial"></i> Pytest</span>
-        <span class="badge badge-orange"><i class="fas fa-laptop-code"></i> PyCharm</span>
+        <span class="badge badge-orange"><i class="fas fa-code"></i> PyCharm</span>
         <span class="badge badge-orange"><i class="fas fa-exchange-alt"></i> Requests Library</span>
         <span class="badge badge-purple">Page Object Model (POM)</span>
         <span class="badge badge-purple">API Test Automation</span>
         <span class="badge badge-purple">XPath &amp; CSS Selectors</span>
-        <span class="badge badge-teal">WebDriverWait (Explicit)</span>
+        <span class="badge badge-purple">WebDriverWait (Explicit)</span>
       </div>
     </div>
 
     <div class="stack-cat">
       <div class="cat-title">🏆 Standards &amp; Compliance</div>
       <div class="badges">
-        <span class="badge badge-pink"><i class="fas fa-certificate"></i> ISO 9001</span>
-        <span class="badge badge-pink"><i class="fas fa-shield-alt"></i> ISO 27001</span>
-        <span class="badge badge-green"><i class="fas fa-bolt"></i> Microsoft Power Automate</span>
+        <span class="badge badge-green">ISO 9001</span>
+        <span class="badge badge-green">ISO 27001</span>
+        <span class="badge badge-green">Microsoft Power Automate</span>
       </div>
     </div>
   </div>
@@ -733,14 +713,14 @@
     </div>
 
     <!-- ══ PROJECT 06 ══ -->
-    <div class="project-card">
+    <div class="project-card" style="border-color: var(--teal-l); box-shadow: 0 0 0 2px var(--teal-pale);">
       <div class="project-header">
         <div>
-          <div class="project-num">Project 06</div>
+          <div class="project-num" style="color: var(--teal);">Project 06</div>
           <div class="project-title">🚗 Urban Routes — UI Automation</div>
           <div class="project-sub">End-to-End Web Testing · Selenium · Page Object Model · TripleTen Bootcamp, Sprint 9 (2026)</div>
         </div>
-        <span class="project-type"><i class="fas fa-laptop-code"></i> E2E Automation</span>
+        <span class="project-type" style="background: var(--teal-pale); color: var(--teal);"><i class="fas fa-laptop-code"></i> E2E Automation</span>
       </div>
       <div class="project-body">
 
@@ -782,14 +762,14 @@
     </div>
 
     <!-- ══ PROJECT 05 ══ -->
-    <div class="project-card">
+    <div class="project-card" style="border-color: var(--teal-l); box-shadow: 0 0 0 2px var(--teal-pale);">
       <div class="project-header">
         <div>
-          <div class="project-num">Project 05</div>
+          <div class="project-num" style="color: var(--teal);">Project 05</div>
           <div class="project-title">🤖 Urban Grocers — API Automation</div>
           <div class="project-sub">API Test Automation · Python · Pytest · TripleTen Bootcamp, Sprint 8 (2026)</div>
         </div>
-        <span class="project-type"><i class="fas fa-robot"></i> Test Automation</span>
+        <span class="project-type" style="background: var(--teal-pale); color: var(--teal);"><i class="fas fa-robot"></i> Test Automation</span>
       </div>
       <div class="project-body">
 
@@ -985,9 +965,6 @@
         </div>
 
       </div>
-      <div class="project-footer">
-        <a href="https://github.com/yusistely-luna/qa-project-urban-grocers-api" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub Repository</a>
-      </div>
     </div>
 
     <!-- ── PROJECT 1 ── -->
@@ -1075,23 +1052,23 @@
     <div class="ach-list">
       <div class="ach-card">
         <div class="ach-icon"><i class="fas fa-bolt"></i></div>
-        <div class="ach-text">
-          <strong>Non-Conformity Closure Time: 12 months → 3 months</strong>
-          <p>Automated the follow-up process using Microsoft Power Automate, improving on-time closure rate from 30% to 90%.</p>
+        <div>
+          <div class="ach-title">Non-Conformity Closure Time: 12 months → 3 months</div>
+          <div class="ach-desc">Automated the follow-up process using Microsoft Power Automate, improving on-time closure rate from 30% to 90%.</div>
         </div>
       </div>
       <div class="ach-card">
-        <div class="ach-icon"><i class="fas fa-award"></i></div>
-        <div class="ach-text">
-          <strong>GMP Audit Score: 92% → 98% — Zero Critical Findings</strong>
-          <p>Led external audits achieving 0 critical findings and significantly improved a key customer's GMP audit score.</p>
+        <div class="ach-icon"><i class="fas fa-medal"></i></div>
+        <div>
+          <div class="ach-title">GMP Audit Score: 92% → 98% — Zero Critical Findings</div>
+          <div class="ach-desc">Led external audits achieving 0 critical findings and significantly improved a key customer's GMP audit score.</div>
         </div>
       </div>
       <div class="ach-card">
         <div class="ach-icon"><i class="fas fa-shield-alt"></i></div>
-        <div class="ach-text">
-          <strong>ISO 27001 Certification — Formally Recognized by External Auditor</strong>
-          <p>Supported the ISO 27001 certification for the Software Development department; formally recognized by the external auditor.</p>
+        <div>
+          <div class="ach-title">ISO 27001 Certification — Formally Recognized by External Auditor</div>
+          <div class="ach-desc">Supported the ISO 27001 certification for the Software Development department; formally recognized by the external auditor.</div>
         </div>
       </div>
     </div>
@@ -1100,99 +1077,48 @@
 
 <!-- ══ CONTACT ══ -->
 <section id="contact">
-  <div class="section-inner">
+  <div class="contact-inner">
     <p class="section-label">Let's talk</p>
     <h2 class="section-title">Contact</h2>
-    <div class="section-line" style="margin:0 auto 2rem;"></div>
-    <p class="contact-desc">I'm actively looking for remote QA Engineer opportunities. Whether you want to discuss a role, a project, or just say hi — I'd love to hear from you.</p>
+    <div class="section-line"></div>
+    <p class="contact-desc">
+      I'm actively looking for remote QA Engineer opportunities. Whether you want to discuss a role, a project, or just say hi — I'd love to hear from you.
+    </p>
     <div class="contact-cards">
       <a href="mailto:yusistely.luna@gmail.com" class="contact-card">
         <i class="fas fa-envelope"></i>
-        <span class="cc-label">Email</span>
+        <div class="cc-label">Email</div>
         <span class="cc-value">yusistely.luna@gmail.com</span>
       </a>
       <a href="https://linkedin.com/in/yusistely-luna-iis" target="_blank" class="contact-card">
         <i class="fab fa-linkedin"></i>
-        <span class="cc-label">LinkedIn</span>
+        <div class="cc-label">LinkedIn</div>
         <span class="cc-value">yusistely-luna-iis</span>
       </a>
       <a href="https://github.com/yusistely-luna" target="_blank" class="contact-card">
         <i class="fab fa-github"></i>
-        <span class="cc-label">GitHub</span>
+        <div class="cc-label">GitHub</div>
         <span class="cc-value">yusistely-luna</span>
       </a>
     </div>
-    <a href="CV_Yusistely_Luna_QA_Engineer_v1.pdf" class="btn btn-primary" target="_blank" download>
-      <i class="fas fa-file-download"></i> Download CV (English)
-    </a>
+    <a href="CV_Yusistely_Luna_QA_Engineer_v1.pdf" class="btn btn-primary" target="_blank" download><i class="fas fa-file-alt"></i> Download CV (English)</a>
   </div>
 </section>
 
-<!-- ══ MODAL SCREENSHOT FULLSCREEN ══ -->
-<div id="screenshotModal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;">
-  <span id="closeModal" style="position:absolute;top:32px;right:48px;font-size:3rem;color:#fff;cursor:pointer;font-family:sans-serif;z-index:10001">&times;</span>
-  <img id="modalImg" src="" alt="Screenshot" style="max-width:96vw;max-height:90vh;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);border:8px solid #fff;z-index:10000;object-fit:contain;background:#222"/>
-</div>
-<!-- ══ FOOTER ══ -->
 <footer>
-  <p>Built by <a href="https://github.com/yusistely-luna">Yusistely Luna</a> · QA Engineer Jr. · Toluca, Mexico · 2026</p>
+  Built by <a href="https://github.com/yusistely-luna">Yusistely Luna</a> · QA Engineer Jr. · Toluca, Mexico · 2026
 </footer>
 
-<!-- ══ SCRIPTS: THEME Y MODAL ══ -->
 <script>
-  // Theme toggle
-  const html        = document.documentElement;
-  const toggleBtn   = document.getElementById('themeToggle');
-  const themeIcon   = document.getElementById('themeIcon');
-  const STORAGE_KEY = 'yl-portfolio-theme';
-
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'dark'
-      ? 'fas fa-moon theme-icon'
-      : 'fas fa-sun theme-icon';
-    localStorage.setItem(STORAGE_KEY, theme);
-  }
-
-  // Load saved preference; default = light
-  const saved = localStorage.getItem(STORAGE_KEY) || 'light';
-  applyTheme(saved);
-
-  toggleBtn.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  });
-
-  // Modal screenshots fullscreen
-  document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('screenshotModal');
-    const modalImg = document.getElementById('modalImg');
-    const closeModal = document.getElementById('closeModal');
-    let lastScroll = 0;
-    document.querySelectorAll('.screenshot-img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', function(e) {
-        e.preventDefault();
-        lastScroll = window.scrollY;
-        modal.style.display = 'flex';
-        modalImg.src = this.src;
-        modalImg.alt = this.alt;
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    function closeModalFn() {
-      modal.style.display = 'none';
-      modalImg.src = '';
-      document.body.style.overflow = '';
-      window.scrollTo(0, lastScroll);
-    }
-    closeModal.addEventListener('click', closeModalFn);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModalFn();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'flex') closeModalFn();
-    });
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) root.setAttribute('data-theme', saved);
+  toggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   });
 </script>
 
